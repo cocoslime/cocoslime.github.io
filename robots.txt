@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://moon9342.github.io/sitemap.xml
+Sitemap: https://cocoslime.github.io/sitemap.xml
