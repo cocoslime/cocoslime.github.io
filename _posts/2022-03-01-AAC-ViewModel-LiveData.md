@@ -118,9 +118,11 @@ class GameViewModel : ViewModel() {
 
 ## Observable LiveData
 
-- LiveData는 observer pattern을 따른다. 패턴에서 “Observable”은 LiveData 객체, “Observer” 들은 UI controller의 함수들이다. LiveData의 데이터가 변화할 때, Observer method들이 수행된다.
-- Observer 객체들을 LiveData 에 붙이기 위하여, observe() 함수를 사용한다. observe 함수는 LifecycleOwner 타입을 필요로 하는데, 이때 Fragment view의 LifecycleOwner인 viewLifecycleOwner를 사용한다.
-    - Fragment view는 다른 요소로 이동할 때 destroy 되지만, Fragment 자체는 destroy되지 않을 수 있다. 즉, 이것은 두개의 lifecycle을 만들어내는데, fragment’s view의 lifecycle과 fragment의 lifecycle 이다. LiveData의 목적은 View 를 업데이트 하는 것이므로 view의 lifecycle에 맞게 동작하여야 한다.
+LiveData는 observer pattern을 따른다. 패턴에서 “Observable”은 LiveData 객체, “Observer” 들은 UI controller의 함수들이다. LiveData의 데이터가 변화할 때, Observer method들이 수행된다.
+
+Observer 객체들을 LiveData 에 붙이기 위하여, observe() 함수를 사용한다. observe 함수는 LifecycleOwner 타입을 필요로 하는데, 이때 Fragment view의 LifecycleOwner인 viewLifecycleOwner를 사용한다.
+    
+    Fragment view는 다른 요소로 이동할 때 destroy 되지만, Fragment 자체는 destroy되지 않을 수 있다. 즉, 이것은 두개의 lifecycle을 만들어내는데, fragment’s view의 lifecycle과 fragment의 lifecycle 이다. LiveData의 목적은 View 를 업데이트 하는 것이므로 view의 lifecycle에 맞게 동작하여야 한다.
 
 ```kotlin
 // In CreateView of Fragment
@@ -131,20 +133,23 @@ viewModel.score.observe(viewLifecycleOwner, Observer { newScore ->
 })
 ```
 
-- LiveData의 변화만이 Observer 들에게 업데이트를 전송하지만, 한가지 예외는 비활성화 상태에서 활성화 상태로 변화할 때도 Observer 들은 업데이트를 받을 수 있다.
+LiveData의 변화만이 Observer 들에게 업데이트를 전송하지만, 한가지 예외는 비활성화 상태에서 활성화 상태로 변화할 때도 Observer 들은 업데이트를 받을 수 있다.
 
 ## LiveData Transformation
 
-* ```Transformations.map()``` 원본 LiveData 에서 다른 LiveData 로 변환 할 수 있다.
+```Transformations.map()``` 을 사용하여, 원본 LiveData 에서 다른 LiveData 로 변환 할 수 있다.
 
 ```kotlin
 // currentTime => Long 타입의 정수(seconds)
+// val currentTime : LiveData<Long>
+
 val currentTimeString : LiveData<String> = Transformations.map(currentTime) { time ->
    DateUtils.formatElapsedTime(time) // 초 단위의 값을 MM:SS 형태의 String 으로 변환한다.
    // currentTime의 변화에 따라 currentTimeString의 데이터도 자동으로 변한다.
 }
 ```
-* Observer를 추가하여 currentTimeString의 변화에 대응하여 UI를 업데이트 한다.
+
+Observer를 추가하여 currentTimeString의 변화에 대응하여 UI를 업데이트 할 수 있다.
 
 ```kotlin
 viewModel.currentTimeString.observe(viewLifecycleOwner, Observer<String> { timeStr ->
@@ -168,7 +173,7 @@ Data binding 라이브러리를 통해 UI Controller의 Listener를 통하지 �
 
 ## ViewModel data binding
 
-- ViewModel과 layout을 data binding을 사용해 연결한다.
+ViewModel과 layout을 data binding을 사용해 연결한다.
 
 ```xml
 <data>
@@ -178,13 +183,13 @@ Data binding 라이브러리를 통해 UI Controller의 Listener를 통하지 �
 </data>
 ```
 
-- layout의 variable에 ViewModel 객체를 할당한다. 이제 layout은 ViewModel의 함수를 포함한 모든 접근 가능 데이터에 접근할 수 있다.
+layout의 variable에 ViewModel 객체를 할당한다. 이제 layout은 ViewModel의 함수를 포함한 모든 접근 가능 데이터에 접근할 수 있다.
 
 ```kotlin
 binding.gameViewModel = viewModel
 ```
 
-- UI Controller 에서 onClickListener를 구현했던 버튼을 layout에서 ViewModel의 함수에 바로 접근하도록 layout 파일을 수정한다.
+UI Controller 에서 onClickListener를 구현했던 버튼을 layout에서 ViewModel의 함수에 바로 접근하도록 layout 파일을 수정한다.
 
 ```xml
 <Button
@@ -194,19 +199,21 @@ binding.gameViewModel = viewModel
    ... />
 ```
 
-- layout의 모든 버튼에서 ViewModel로 직접 접근하도록 data binding 하는 것은 불가능하다. UI Controller 에서 해당 데이터 변화에 따라 다른 UI component로 이동한다거나 하는 경우는 UI controller의 개입이 필요하다.
-  - But, 상태 변화를 위한 LiveData를 만들고 UI controller에서 이를 observe 하다가 변화가 일어나면 다른 Fragment로 이동하는 방식으로 구현은 가능하다.
+~~layout의 모든 버튼에서 ViewModel로 직접 접근하도록 data binding 하는 것은 불가능하다. UI Controller 에서 해당 데이터 변화에 따라 다른 UI component로 이동한다거나 하는 경우는 UI controller의 개입이 필요하다.~~
+
+상태 변화를 위한 LiveData를 만들고 UI controller에서 이를 observe 하다가 변화가 일어나면 다른 Fragment로 이동하는 방식으로 구현은 가능하다.
+
+    View --(Listener)--> ViewModel --(Update)--> LiveData --(Observe)--> Ui Controller
 
 ## LiveData data binding
 
-- LiveData 객체를 바인딩하여, 데이터의 변화를 UI에 자동적으로 반영하도록 할 수 있다.
-- view를 ViewModel 내부의 LiveData 객체에 직접 바인딩한다.
+LiveData 객체를 바인딩하여, 데이터의 변화를 UI에 자동적으로 반영하도록 할 수 있다. layout의 view를 ViewModel 내부의 LiveData 객체에 직접 바인딩한다.
 
 ```xml
 android:text="@{gameViewModel.word}"
 ```
 
-- LiveData의 데이터 바인딩이 작동하기 위해서 UI controller의 binding 변수의 lifecycle owner를 현재 View의 것으로 설정해야 한다.
+LiveData의 데이터 바인딩이 작동하기 위해서 UI controller의 binding 변수의 lifecycle owner를 현재 View의 것으로 설정해야 한다.
 
 ```kotlin
 binding.lifecycleOwner = this.viewLifecycleOwner
