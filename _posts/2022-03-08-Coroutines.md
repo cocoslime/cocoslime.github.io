@@ -24,9 +24,10 @@ toc_sticky: true
 <br>
 
 이 글은 다음 링크의 글을 참고하여 한글로 정리한 것입니다.
-[Kotlin 공식 Coroutines 가이드](https://kotlinlang.org/docs/coroutines-guide.html)
-[Kotlin 공식 Coroutines Tutorial](https://play.kotlinlang.org/hands-on/Introduction%20to%20Coroutines%20and%20Channels/01_Introduction)
-[Kotlin World - Coroutines](https://kotlinworld.com/category/Coroutines/Coroutine%20Basics)
+
+* [Kotlin 공식 Coroutines 가이드](https://kotlinlang.org/docs/coroutines-guide.html)
+* [Kotlin 공식 Coroutines Tutorial](https://play.kotlinlang.org/hands-on/Introduction%20to%20Coroutines%20and%20Channels/01_Introduction)
+* [Kotlin World - Coroutines](https://kotlinworld.com/category/Coroutines/Coroutine%20Basics)
 
 ## Coroutines Basic
 
@@ -246,7 +247,9 @@ New ---> Active ----> Completing -----> Completed
 
 ## Coroutine scope 와 Coroutine context
 
-“외부 scope의 dispatcher를 사용한다” 라는 문장보다 사실 “외부 scope의 context의 dispatcher를 사용한다”가 더 맞는 문장입니다. *Coroutine scope* 는 서로 다른 코루틴 사이의 구조와 부모-자식 관계를 담당합니다. 우리는 항상 scope 내부에서 새로운 코루틴을 시작합니다. *Coroutine context* 는 주어진 코루틴을 실행하기 위한 부가적인 technical information 을 저장합니다 (코루틴 이름, 코루틴이 실행되어야 하는 쓰레드가 명시된 dispatcher 등).
+“외부 scope의 dispatcher를 사용한다” 라는 문장보다 사실 “외부 scope의 context의 dispatcher를 사용한다”가 더 맞는 문장입니다. *Coroutine scope* 는 서로 다른 코루틴 사이의 구조와 부모-자식 관계를 담당합니다. 모든 코루틴은 항상 scope 내부에서 시작됩니다. Scope는 Job을 통해 코루틴의 수명을 제어합니다. Scope의 Job이 취소되면, 해당 scope에서 시작된 모든 코루틴은 취소됩니다. 
+
+*Coroutine context* 는 주어진 코루틴을 실행하기 위한 부가적인 technical information 을 저장합니다 (코루틴 이름, 코루틴이 실행되어야 하는 쓰레드가 명시된 dispatcher 등).
 
 launch, async, runBlocking 이 새로운 코루틴 시작을 위해 사용될 때, 알아서 scope를 생성합니다. 그리고 새로운 코루틴은 생성된 이 scope 내부에서 시작됩니다. 이 세 함수들은 모두 인자로 람다 함수를 사용하고, 이 암시적인 리시버의 타입은 *CoroutineScope* 입니다.
 
