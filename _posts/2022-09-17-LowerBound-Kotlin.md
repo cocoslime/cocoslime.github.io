@@ -14,6 +14,8 @@ toc: true
 toc_sticky: true
 ---
 
+C++ 의 standard library 에서 제공하는 [lower_bound](https://en.cppreference.com/w/cpp/algorithm/lower_bound) 를 kotlin 에 맞게 구현한 코드이다. 
+
 ```kotlin
 fun <T> lowerBound(elements: Array<Comparable<T>>, low: Int, high: Int, target: T) : Int {
     var currentLow = low
