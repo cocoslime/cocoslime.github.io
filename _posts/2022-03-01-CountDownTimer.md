@@ -3,7 +3,7 @@ title:  "[Android] CountDownTimer - 타이머 동작 구현"
 excerpt: "CountDownTimer를 통해 간단히 타이머 동작을 구현해보자"
 
 categories:
-  - Blog
+  - develop
 tags:
   - Android
 last_modified_at: 2022-03-01T16:00:00-05:00

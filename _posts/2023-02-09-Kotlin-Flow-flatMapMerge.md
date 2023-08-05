@@ -3,7 +3,7 @@ title:  "Kotlin Flow 의 flatMapMerge"
 excerpt: "병렬로 데이터 변환을 처리하는 flatMapMerge 에 대해 알아보자"
 
 categories:
-  - Blog
+  - develop
 tags:
   - Kotlin
   - Flow

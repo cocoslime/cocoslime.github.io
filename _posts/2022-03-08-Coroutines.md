@@ -3,7 +3,7 @@ title:  "[Kotlin] Coroutines Basics"
 excerpt: "Kotlin Coroutines 기초 개념 및 사용법"
 
 categories:
-  - Blog
+  - develop
 tags:
   - Coroutines
   - Kotlin

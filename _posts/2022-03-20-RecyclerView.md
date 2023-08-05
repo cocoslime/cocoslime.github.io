@@ -3,7 +3,7 @@ title:  "[Android] RecyclerView 사용법 기초"
 excerpt: "Android RecyclerView 에 대한 기본 개념 및 샘플"
 
 categories:
-  - Blog
+  - develop
 tags:
   - Android
   - Kotlin
