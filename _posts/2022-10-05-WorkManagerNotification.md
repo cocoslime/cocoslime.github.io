@@ -3,7 +3,7 @@ title:  "[Android] 주기적인 알림 구현 (WorkManager, Notification)"
 excerpt: ""
 
 categories:
-  - develop
+  - blog
 tags:
   - Android
   - Kotlin

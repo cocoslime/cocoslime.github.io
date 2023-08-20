@@ -3,7 +3,7 @@ title:  "[Kotlin] Kotlin 에서의 Lower bound 구현"
 excerpt: ""
 
 categories:
-  - develop
+  - blog
 tags:
   - Kotlin
   - TIL

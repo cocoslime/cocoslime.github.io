@@ -3,7 +3,7 @@ title:  "안드로이드 웹 뷰에서 특정 도메인 url 에 대한 동작 �
 excerpt: "안드로이드 WebView 특정 도메인의 URL에 대한 동작을 단순히 웹 페이지를 열지 않고, 앱에서 처리해야 하도록 구현"
 
 categories:
-  - develop
+  - blog
 tags:
   - Android
   - WebView

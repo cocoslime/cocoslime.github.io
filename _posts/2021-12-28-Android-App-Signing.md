@@ -3,7 +3,7 @@ title:  "[Android] 안드로이드 앱 서명 (feat. Android App Bundle)"
 excerpt: "안드로이드 앱 서명 방식의 변화와 AAB에 대해 알아보자"
 
 categories:
-  - develop
+  - blog
 tags:
   - Android
   - ABB

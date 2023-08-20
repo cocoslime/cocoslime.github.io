@@ -3,7 +3,7 @@ title:  "[Android] (AAC) ViewModel, LiveData 그리고 Data Binding "
 excerpt: "ViewModel과 LiveData 사용법 그리고 둘에 대한 Data Binding"
 
 categories:
-  - develop
+  - blog
 tags:
   - Android
   - Kotlin
