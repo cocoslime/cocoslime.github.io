@@ -6,8 +6,6 @@ categories:
   - blog
 tags:
   - Android
-  - Kotlin
-  - TIL
 last_modified_at: 2022-03-01T16:00:00-05:00
 
 toc: true

@@ -6,7 +6,6 @@ categories:
   - blog
 tags:
   - Kotlin
-  - TIL
 
 date: 2022-09-17
 

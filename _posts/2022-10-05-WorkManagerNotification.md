@@ -6,8 +6,6 @@ categories:
   - blog
 tags:
   - Android
-  - Kotlin
-  - TIL
   - WorkManager
 
 date: 2022-10-05
@@ -15,8 +13,6 @@ date: 2022-10-05
 toc: true
 toc_sticky: true
 ---
-
-# 주기적인 알림 구현 (WorkManager, Notification)
 
 안드로이드에서 [WorkManager](https://developer.android.com/topic/libraries/architecture/workmanager?hl=ko) 를 이용해 주기적으로 정해진 시간 간격마다 푸시 알림을 띄울 수  있습니다. 간단한 예시 프로젝트를 통해 설명드리겠습니다.
 

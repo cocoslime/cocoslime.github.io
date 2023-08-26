@@ -6,8 +6,6 @@ categories:
   - blog
 tags:
   - Coroutines
-  - Kotlin
-  - TIL
 date: 2022-03-08
 
 toc: true

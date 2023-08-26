@@ -13,8 +13,6 @@ toc: true
 toc_sticky: true
 ---
 
-# 안드로이드 웹 뷰에서 특정 도메인 url 에 대한 동작 구현
-
 안드로이드 앱에서 `WebView`를 사용하여 웹 페이지를 표시하는 경우, 특정 도메인의 URL에 대한 동작을 단순히 웹 페이지를 열지 않고, 앱에서 처리해야 하는 경우가 있습니다. 이를 위해 `WebViewClient`의 `shouldOverrideUrlLoading` 메서드를 사용할 수 있습니다. 
 
 ### WebViewClient를 상속하는 커스텀 클래스 만들기

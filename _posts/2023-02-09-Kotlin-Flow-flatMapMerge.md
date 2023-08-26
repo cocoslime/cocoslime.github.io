@@ -13,10 +13,6 @@ toc: true
 toc_sticky: true
 ---
 
-# Kotlin Flow 의 flatMapMerge
-
-태그: Kotlin
-
 Kotlin Flow 에는 세 가지의 flatMap 이 있다.
 
 flatMapConcat, flatMapLatest, flatMapMerge
@@ -55,5 +51,4 @@ fun <T> Flow<Flow<T>>.flattenMerge(concurrency: Int = DEFAULT_CONCURRENCY): Flow
 참고 페이지
 
 [flatMapMerge](https://kotlinlang.org/api/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/flat-map-merge.html)
-
 [flattenMerge](https://kotlinlang.org/api/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/flatten-merge.html)

@@ -6,8 +6,6 @@ categories:
   - blog
 tags:
   - Android
-  - Kotlin
-  - TIL
   - RecyclerView
 
 date: 2022-03-20
