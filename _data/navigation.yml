@@ -2,11 +2,11 @@
 main:
   # - title: "Quick-Start Guide"
   #   url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
-  - title: "Develop"
-    url: /blog/
-  - title: "Life"
-    url: /life/
-  - title: "Post"
-    url: /year-archive/
+  - title: "Posts"
+    url: /categories/
+  - title: "Tags"
+    url: /tags/
+  - title: "About"
+    url: /about/
 
   # - title: "Book-WrapUp"
