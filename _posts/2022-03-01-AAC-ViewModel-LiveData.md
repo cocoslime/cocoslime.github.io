@@ -12,7 +12,7 @@ toc: true
 toc_sticky: true
 ---
 
-이 게시글의 코드 및 설명은 다음을 참고하였습니다: [안드로이드 개발자 사이트](https://developer.android.com/codelabs/kotlin-android-training-live-data?index=..%2F..android-kotlin-fundamentals#7)
+이 게시글의 코드 및 설명은 다음을 참고하였습니다: [안드로이드 개발자 사이트](https://developer.android.com/topic/libraries/architecture/viewmodel?hl=ko)
 
 # ViewModel 용어
 
