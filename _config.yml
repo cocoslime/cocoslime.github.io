@@ -103,7 +103,7 @@ analytics:
 # Site Author
 author:
   name             : "Dongmin Kim"
-  avatar           : "/assets/img/teaser.png" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "/assets/img/home.png" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "Android Developer"
   location         : "Seoul, Korea"
   email            :
