@@ -16,7 +16,7 @@ minimal_mistakes_skin    : "dark" # "air", "aqua", "contrast", "dark", "dirt", "
 
 # Site Settings
 locale                   : "en-US"
-title                    : "평범한 개발자 블로그"
+title                    : "cocoslime's blog"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "Dongmin Kim"
@@ -104,7 +104,7 @@ analytics:
 author:
   name             : "Dongmin Kim"
   avatar           : "/assets/img/home.png" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "Android Developer"
+  bio              : "Software Engineer: Android, Kotlin, C++"
   location         : "Seoul, Korea"
   email            :
   links:
