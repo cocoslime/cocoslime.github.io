@@ -237,7 +237,8 @@ Drop 버튼과 Publish 버튼 모두 활성화 되어 있다면, Publish 버튼�
 <img src="{{ site.url }}{{ site.baseurl }}/assets/img/Pasted image 20240615132141.png" alt="qry" width="600" >
 </p>
 
-## 예외 처리
+## 트러블 슈팅
+
 ### Invalid token 에러
 publish 태스크에서 다음과 같은 에러가 발생할 수 있습니다.
 ```
@@ -253,5 +254,22 @@ dependencies 에 version 정보가 명확히 기재되어 있어야 합니다. �
 <img src="{{ site.url }}{{ site.baseurl }}/assets/img/Pasted image 20240615131630.png" alt="qry" width="600" >
 </p>
 
+> p.s. [Ian Wagner 님의 comment](http://disq.us/p/3015lnr) 에 의하면, compose-bom 은 google maven repo 에 있어서 maven central 에서 찾지 못하는 문제이므로 compose-bom 을 사용하기 위해선 maven central 에 google maven repo 에 대한 정보를 알려주어야 합니다. 꼭 BOM 에 의한 버전관리가 필요하시다면, pom block 에 다음을 작성해 해결할 수 있습니다. 이 코드는 생성되는 POM 파일에 Google Maven 저장소 정보를 추가합니다.
 
+```groovy
 
+mavenPublishing {
+    ...
+
+    pom {
+        ...
+
+        withXml {
+          def repo = asNode().appendNode('repositories').appendNode('repository')
+          repo.appendNode('name', 'Google')
+          repo.appendNode('id', 'google')
+          repo.appendNode('url', ' https://maven.google.com/')
+        }
+```
+
+하지만 가능한 모든 의존성을 같은 Maven Central 에서 해결할 수 있도록 하는 것이 더 좋은 방향이라고 생각이 되어, 추천드리는 방식은 아닙니다.
