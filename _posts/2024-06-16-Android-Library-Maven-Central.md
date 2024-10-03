@@ -101,13 +101,13 @@ gpg --keyring secring.gpg --export-secret-keys > ~/.gnupg/secring.gpg
 build.gradle.kts 에 [com.vanniktech.maven.publish](https://vanniktech.github.io/gradle-maven-publish-plugin/central/) plugin 를 통해 maven central 에 publish 하는 스크립트를 작성합니다.
 
 먼저 plugin 을 적용합니다.
-```groovy
+```kotlin
 plugins {
     id("com.vanniktech.maven.publish") version "0.28.0"
 }
 ```
 다음은 Maven Central 에 게시를 활성화하고, GPG 서명을 활성화합니다.
-```groovy
+```kotlin
 import com.vanniktech.maven.publish.SonatypeHost
 
 mavenPublishing {
@@ -117,7 +117,7 @@ mavenPublishing {
 }
 ```
 POM 을 configure 합니다. pom 은 프로젝트와 함께 게시되며 프로젝트 좌표와 URL 및 사용된 라이선스와 같은 프로젝트에 대한 일반적인 정보를 나타냅니다.
-```groovy
+```kotlin
 mavenPublishing {
   coordinates("com.example.mylibrary", "mylibrary-runtime", "1.0.3-SNAPSHOT")
 
@@ -151,7 +151,7 @@ mavenPublishing {
 
 이렇게 완성된 build.gradle.kts 의 예시입니다.
 
-```groovy
+```kotlin
 import com.vanniktech.maven.publish.SonatypeHost
 
 plugins {
@@ -247,16 +247,20 @@ Upload failed: {"error":{"message":"Invalid token"}}
 포탈의 토큰의 유효기간이 만료되었을 수 있으므로 토큰을 재발급하여 다시 토큰 정보를 기입합니다. 혹은, 토큰 정보가 제대로 기입되어 있는지(gradle.properties) 확인합니다.
 
 ### Deployments 에서 Dependency version information is missing 에러
+
 publish task 는 성공 했는데, "Dependency version information is missing" 메시지와 함께 에러가 발생한다면, build.gradle.kts 의 dependencies 블록을 확인합니다.
-dependencies 에 version 정보가 명확히 기재되어 있어야 합니다. 저는 compose-bom 을 사용해서 의존성을 관리하고 있었는데, 이런 경우 아래 에러 메시지가 발생했습니다.
+
+저는 compose-bom 을 사용해서 의존성을 관리하고 있었고, 아래 에러 메시지가 발생했습니다.
 
 <p  align="center">
 <img src="{{ site.url }}{{ site.baseurl }}/assets/img/Pasted image 20240615131630.png" alt="qry" width="600" >
 </p>
 
-> p.s. [Ian Wagner 님의 comment](http://disq.us/p/3015lnr) 에 의하면, compose-bom 은 google maven repo 에 있어서 maven central 에서 찾지 못하는 문제이므로 compose-bom 을 사용하기 위해선 maven central 에 google maven repo 에 대한 정보를 알려주어야 합니다. 꼭 BOM 에 의한 버전관리가 필요하시다면, pom block 에 다음을 작성해 해결할 수 있습니다. 이 코드는 생성되는 POM 파일에 Google Maven 저장소 정보를 추가합니다.
+compose-bom 은 Google maven 저장소에 존재하여, Maven central 에서 찾지 못하는 문제입니다. compose-bom 대신 직접 의존성 버전을 명시하여 해결할 수 있습니다.
 
-```groovy
+> p.s. [Ian Wagner 님의 코멘트](http://disq.us/p/3015lnr) 에 의하면, compose-bom 을 사용하기 위해선 pom 블록에 다음을 작성해 maven central 에 google maven repo 에 대한 정보를 알려주어 해결할 수 있습니다. 이 코드는 생성되는 POM 파일에 Google Maven 저장소 정보를 추가합니다.
+
+```kotlin
 
 mavenPublishing {
     ...
